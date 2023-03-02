@@ -1,0 +1,77 @@
+#include<iostream>
+#include<algorithm>
+#include<cmath>
+#include<vector>
+#include<map>
+#include<queue>
+#include<string>
+#include<set>
+using namespace std;
+int n,m;
+bool flag=true;
+map<int,int> SubDay;
+vector<int> Rely[1000];
+
+int sum[1000]={0};
+int late[1000]={0};
+int main(){
+    cin>>n>>m;
+for(int i=1;i<=m;i++){
+    int temp;
+    cin>>temp;
+    if(temp!=0)
+  {  Rely[temp].push_back(i);
+   
+  }
+    else if(temp==0)
+    sum[i]=1;
+}
+for(int i=1;i<=m;i++)
+{
+    cin>>SubDay[i];
+}
+sum[1]=1;
+for(int i=1;i<=m;i++){
+
+    if(Rely[i].empty()){
+    late[i]=n-SubDay[i]+1;
+    continue;
+    }
+
+    for(auto ii=Rely[i].begin();ii!=Rely[i].end();ii++)
+   sum[*ii]=sum[i]+SubDay[i];
+
+
+}
+for(int i=1;i<=m;i++)
+cout<<sum[i]<<" ";
+
+for(int i=1;i<=m;i++)
+if(sum[i]+SubDay[i]>n+1)
+flag=false;
+
+// for(int i=1;i<=m;i++)
+// cout<<late[i];
+
+for(int i=m-1;i>=1;i--){
+  
+    if(Rely[i].empty())continue;
+    late[i]=n;
+    for(auto ii=Rely[i].begin();ii!=Rely[i].end();ii++)
+    late[i]=min(late[i],late[*ii]-SubDay[i]);
+
+}
+cout<<endl;
+
+for(int i=1;i<=m;i++)
+if(late[i]<1)
+flag=false;
+
+if(flag){
+
+for(int i=1;i<=m;i++)
+cout<<late[i]<<" ";
+}
+
+
+}
