@@ -1,0 +1,74 @@
+#include<iostream>
+#include<algorithm>
+#include<cmath>
+#include<vector>
+#include<map>
+#include<queue>
+#include<string>
+#include<set>
+using namespace std;
+int n,m,q;
+bool can=0;
+map<int,pair<string,string>> shouquan;
+char haha[1000];
+struct people{
+string name;
+string caozuo;
+string zhonglei;
+};
+people peoples[100];
+int main(){
+cin>>n>>m>>q;
+for(int i=1;i<=n;i++){
+    int nv,no,nn;
+
+    cin>>peoples[i].name;
+    cin>>nv;
+    
+    cin>>peoples[i].caozuo;
+    cin>>no;
+   
+    cin>>peoples[i].zhonglei;
+    cin>>nn;
+   
+
+}
+for(int i=1;i<=m;i++){
+    char flag;
+    int ns;
+    cin>>shouquan[i].first;
+    cin>>ns;
+    cin>>flag;
+    haha[i]=flag;
+    cin>>shouquan[i].second;
+
+
+}
+for(int i=1;i<=q;i++){
+    can=0;
+    string user;
+    cin>>user;
+     for(int p=1;p<=m;p++)
+        if(shouquan[p].second==user&&haha[p]=='u')
+        can=1;
+    
+   for(int p=1;p<=n;p++)
+   if(peoples[p].name==user)
+can=1;
+
+int ng;
+cin>>ng;
+for(int p=1;p<=ng;p++){
+    string temp;
+    cin>>temp;
+    for(int k=1;k<=m;k++)
+        if(shouquan[k].second==temp&&haha[k]=='g')
+        can=1;
+    
+}
+string temp1,temp2,temp3;
+cin>>temp1>>temp2>>temp3;
+
+cout<<can<<endl;
+}
+}
