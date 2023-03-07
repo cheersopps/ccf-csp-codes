@@ -1,0 +1,63 @@
+#include<iostream>
+#include<algorithm>
+#include<cmath>
+#include<vector>
+#include<map>
+#include<queue>
+#include<string>
+#include<set>
+using namespace std;
+int n,m,g;
+struct Node{
+int qu;
+int renwu;
+
+};
+
+Node node[1010];
+int main(){
+cin>>n>>m;
+for(int i=1;i<=n;i++)
+{int temp;
+cin>>temp;
+node[i].qu=temp;   
+}
+cin>>g;
+for(int i=1;i<=g;i++){
+    double fi;
+int ai,nai,pai,paai,paari;
+cin>>fi>>ai>>nai>>pai>>paai>>paari;
+if(nai!=0)
+for(int i=1;i<=fi;i++){
+    int output=0,used=100000;
+for(int i=1;i<=n;i++){
+    if(node[i].qu==nai&&node[i].renwu<used){
+        output=i;
+        used=node[i].renwu;
+        
+    
+    }
+}
+cout<<output<<" ";
+node[output].renwu++;
+}
+else for(int i=1;i<=fi;i++){
+    int output=0,used=100000;
+for(int i=1;i<=n;i++){
+    if(node[i].renwu<used){
+        output=i;
+        used=node[i].renwu;
+        
+    
+    }
+}
+cout<<output<<" ";
+node[output].renwu++;
+}
+cout<<endl;
+}
+
+
+
+
+}
