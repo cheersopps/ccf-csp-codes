@@ -1,0 +1,92 @@
+#include<iostream>
+#include<algorithm>
+#include<cmath>
+#include<vector>
+#include<map>
+#include<queue>
+#include<string>
+#include<set>
+using namespace std;
+int n,m,q;
+bool can=0;
+vector<string> ops;
+map<int,pair<string,string>> shouquan;
+map<string,pair<string,string>> ren;
+set<string> r;
+
+
+int main(){
+cin>>n>>m>>q;
+for(int i=1;i<=n;i++){
+    int nv,no,nn;
+string peo;
+cin>>peo;
+r.insert(peo);
+    cin>>nv;
+     cin>>ren[peo].first;
+    cin>>no;
+     cin>>ren[peo].second;
+    cin>>nn;
+   
+
+}
+for(int i=1;i<=m;i++){
+    char flag;
+    int ns;
+    cin>>shouquan[i].first;
+    cin>>ns;
+    cin>>flag;
+    cin>>shouquan[i].second;
+
+
+}
+for(int i=1;i<=q;i++){
+    can=0;
+    string user;
+    cin>>user;
+ 
+
+int ng;
+cin>>ng;
+for(int p=1;p<=ng;p++){
+    string temp;
+    cin>>temp;
+    ops.push_back(temp);
+    
+}
+string temp1,temp2,temp3;
+cin>>temp1>>temp2>>temp3;
+
+    for(int p=1;p<=m;p++)
+        if(shouquan[p].second==user&&(temp1==ren[shouquan[p].first].first||
+        ren[shouquan[p].first].first=="*")
+        &&(temp2==
+        ren[shouquan[p].first].second||ren[shouquan[p].first].second=="*")
+        )
+        {
+            can=1;
+            break;
+        }
+    
+
+
+for(auto ii=ops.begin();ii!=ops.end();ii++){
+
+     for(int k=1;k<=m;k++)
+        if(shouquan[k].second==*ii&&(temp1==ren[shouquan[k].first].first
+       ||ren[shouquan[k].first].first=="*")
+        &&(temp2==ren[shouquan[k].first].second||ren[shouquan[k].first].second=="*")
+        )
+         {
+            can=1;
+            break;
+        }
+}
+
+
+cout<<can<<endl;
+while(!ops.empty())ops.pop_back();
+}
+}
+//我不李姐呜呜呜呜呜呜呜呜呜
+//用户组=用户
