@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+double n;
+int a,b;
+
+map<int,int> Matria,Matrib;
+
+long long  ans=0;
+int main(){
+    cin>>n>>a>>b;
+    for(int i=0;i<a;i++)
+    {
+        int Index;
+        cin>>Index;
+        
+        cin>>Matria[Index];
+    }
+    for(int i=0;i<b;i++){
+        int Index,temp;
+        cin>>Index>>temp;
+        if(Matria[Index]!=0)
+        Matrib[Index]=temp;
+    }
+  
+      for(auto ii=Matrib.begin();ii!=Matrib.end();ii++){
+        int temp=ii->first;
+        ans+=Matria[temp]*Matrib[temp];
+    }
+    cout<<ans;
+
+
+
+}
