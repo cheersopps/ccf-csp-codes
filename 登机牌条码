@@ -1,0 +1,70 @@
+#include <bits/stdc++.h>
+using namespace std;
+int w,s,j=0,cnt=0,cnt1=0;
+bool flag=1;
+vector<int> temp;
+//1upper 0lower
+string hhh;
+int a[1010]={0};
+int main(){
+    cin>>w>>s>>hhh;
+    s=-1;
+
+    for(int i=0;i<hhh.size();i++)
+    {
+        if(isupper(hhh[i])&&flag==0){
+            flag=1;
+            a[j]=27;
+            j++;
+            
+
+        }
+        else if(islower(hhh[i])&&flag==1){
+            flag=0;
+            a[j]=28;
+            j++;
+            a[j]=28;
+            j++;
+
+        }
+        if(islower(hhh[i]))
+        a[j]=hhh[i]-'a';
+        if(isupper(hhh[i]))
+        a[j]=hhh[i]-'A';
+         j++;
+    }
+    j--;
+   // cout<<j<<endl;
+   
+    if(j%2==0)
+    j++,a[j]=29;
+    else if(j%2==1);
+
+    //  for(int i=0;i<=j;i++)
+    // cout<<a[i]<<" ";
+    // cout<<endl;
+   // cout<<j/2+2<<" ";
+    for(int i=0;i<=j/2+2;i+=2)
+   {//cout<<a[i]*30+a[i+1]<<" ";
+   temp.push_back(a[i]*30+a[i+1]);
+    cnt++;
+   }
+   
+   
+   while((1+cnt)%w!=0){
+    
+    cnt++;
+    cnt1++;
+   }
+     cout<<cnt+1<<endl;
+
+for(auto ii=temp.begin();ii!=temp.end();ii++){
+    cout<<*ii<<endl;
+   }
+   for(int i=0;i<cnt1;i++)
+   cout<<"900"<<endl;
+
+
+
+   
+}
