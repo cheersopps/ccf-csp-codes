@@ -1,0 +1,83 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n=0,m=0;
+class User{
+public:
+int DN;
+map<int,int> shuxing;
+};
+User Users[3000];
+
+vector<int> chuli(string str){
+        vector<int> ret;
+        if(str.find(":")!=-1)
+        {
+                int loc=str.find(":");
+                auto Key =str.substr(0,loc);
+                auto Value=str.substr(loc+1);
+                int Key_=stoi(Key);
+                int Value_=stoi(Value);
+                for(int i=1;i<=n;i++){
+                    if(Users[i].shuxing[Key_]==Value_)
+                    ret.push_back(Users[i].DN);
+                }
+        }
+        if(str.find("~")!=-1)
+        {
+                int loc=str.find("~");
+                auto Key =str.substr(0,loc);
+                auto Value=str.substr(loc+1);
+                int Key_=stoi(Key);
+                int Value_=stoi(Value);
+                for(int i=1;i<=n;i++){
+                    if(Users[i].shuxing[Key_]!=Value_&&Users[i].shuxing[Key_]!=0)
+                    ret.push_back(Users[i].DN);     }
+        }
+        sort(ret.begin(),ret.end());
+        return ret;
+}
+
+int main(){
+    cin>>n;
+    for(int i=1;i<=n;i++){
+        cin>>Users[i].DN;
+        int geshu=0;
+        cin>>geshu;
+        for(int j=1;j<=geshu;j++){
+            int tmp1=0,tmp2=0;
+            cin>>tmp1>>tmp2;
+            Users[i].shuxing[tmp1]=tmp2;
+        }
+    }
+    cin>>m;
+    for(int k=1;k<=m;k++){
+        string tmp3;
+        cin>>tmp3;
+    vector<int> ret1;
+    ret1=chuli(tmp3);
+    for(auto ii=ret1.begin();ii!=ret1.end();ii++)
+    {
+          cout<<*ii<<" ";
+    }
+    cout<<endl;
+}
+
+}
+
+
+/*
+2
+1 2 1 2 2 3
+2 2 2 3 3 1
+4
+1:2
+3~1
+&(1:2)(2:3)
+|(1:2)(3:1)
+*/
+/*
+1
+
+1
+1 2
+*/
