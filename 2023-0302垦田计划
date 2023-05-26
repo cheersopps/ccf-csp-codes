@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n=0,m=0,k=0;
+int Max=0;
+int t[100010]={0},c[100100]={0};
+bool Judge(int d){
+    long long Sum=0;
+for(int i=1;i<=n;i++)
+{if(t[i]<=d)continue;
+    Sum+=(t[i]-d)*c[i];
+}
+if(Sum<=m)return true;
+else return false;
+}
+int main() {
+  cin>>n>>m>>k;
+  for(int i=1;i<=n;i++){
+  cin>>t[i]>>c[i];
+Max=max(Max,t[i]);
+  }
+  int l=k,r=Max;
+
+  while(l<r){
+  int mid=(l+r)/2;
+if(Judge(mid)==false){
+  
+   l=mid+1;
+//   cout<<"r"<<r<<endl;
+  }
+else if(Judge(mid)==true){
+  
+  r=mid;
+//cout<<"l"<<l<<endl;
+}
+
+  }
+  cout<<l;
+//printf("???%d %d",l,r);
+
+
+}
